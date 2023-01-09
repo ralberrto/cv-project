@@ -5,8 +5,9 @@ class App extends React.Component {
   render() {
 
     const generalInfoChildren = [
-      <TextInput label='First Name' name='first_name' placeholder='John' required={true} />,
-      <TextInput label='Family Name' name='family_name' placeholder='Smith' required={false} />,
+      <LabelledInput type='text' label='First Name' name='first_name' placeholder='John' required={true} />,
+      <LabelledInput type='text' label='Family Name' name='family_name' placeholder='Smith' required={false} />,
+      <LabelledInput type='tel' label='Contact Phone Number' name='phone_number1' placeholder='+1 438 283 1211' required={true} />
     ];
 
     return (
@@ -30,13 +31,13 @@ class FieldSet extends React.Component {
   }
 }
 
-class TextInput extends React.Component {
+class LabelledInput extends React.Component {
   render() {
-    let { label, name, placeholder, required } = { ...this.props };
+    let { type, label, name, placeholder, required } = { ...this.props };
     return(
       <div className='text-input-container'>
         <label htmlFor={name} className='text-input-label'>{label}</label>
-        <input id={name} type='text' className='text-input' placeholder={placeholder} required={required}/>
+        <input type={type} id={name} type='text' className='text-input' placeholder={placeholder} required={required}/>
       </div>
     );
   }
