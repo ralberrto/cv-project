@@ -22,8 +22,10 @@ class App extends React.Component {
     return (
       <div className="App">
         <h2>Apply now</h2>
-        <FieldSet legend='General Information' childInputs={generalInfoInputs} />
-        <FieldSet legend='Education' childInputs={educationInfoInputs} />
+        <form id="apply-form" name="apply-form" action="" method="get">
+          <FieldSet legend='General Information' childInputs={generalInfoInputs} />
+          <FieldSet legend='Education' childInputs={educationInfoInputs} />
+        </form>
       </div>
     );
   };
