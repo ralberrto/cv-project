@@ -13,10 +13,18 @@ class App extends React.Component {
     ];
 
     const educationInfoInputs = [
-      <LabelledInput type='text' key='title' label='Title' name='title' require={true} />,
-      <LabelledInput type='text' key='institution' label='Institution' name='institution' require={true} />,
-      <LabelledInput type='date' key='start-date' label='Start' name='start-date' require={true} />,
-      <LabelledInput type='date' key='end-date' label='End' name='end-date' require={true} />,
+      <LabelledInput type='text' key='title' label='Title' name='title' required={true} />,
+      <LabelledInput type='text' key='institution' label='Institution' name='institution' required={true} />,
+      <LabelledInput type='date' key='start-date' label='Start' name='start-date' required={true} />,
+      <LabelledInput type='date' key='end-date' label='End' name='end-date' required={true} />,
+    ];
+
+    const workExpInputs = [
+      <LabelledInput type='text' key='position' label='Position' name='position' required={true} />,
+      <LabelledInput type='text' key='company' label='Company' name='company' required={true} />,
+      <LabeleedTextarea key='description' label='Job Description' name='description' required={false} />,
+      <LabelledInput type='date' key='start-date' label='Start' name='start-date' required={true} />,
+      <LabelledInput type='date' key='end-date' label='End' name='end-date' required={true} />,
     ];
 
     return (
@@ -25,6 +33,7 @@ class App extends React.Component {
         <form id="apply-form" name="apply-form" action="" method="get">
           <FieldSet legend='General Information' childInputs={generalInfoInputs} />
           <FieldSet legend='Education' childInputs={educationInfoInputs} />
+          <FieldSet legend='Work Experience' childInputs={workExpInputs} />
         </form>
       </div>
     );
@@ -50,6 +59,18 @@ class LabelledInput extends React.Component {
       <div className={`${type}-input-container`}>
         <label htmlFor={name} className={`${type}-input-label`}>{label}</label>
         <input type={type} id={name} className={`${type}-input`} placeholder={placeholder} required={required}/>
+      </div>
+    );
+  }
+}
+
+class LabeleedTextarea extends React.Component {
+  render() {
+    let { label, name, placeholder, required } = { ...this.props };
+    return (
+      <div className='textarea-input-container'>
+        <label htmlFor={name} className='textarea-input-label'>{label}</label>
+        <textarea id={name} className='textarea-input' placeholder={placeholder} required={required}></textarea>
       </div>
     );
   }
