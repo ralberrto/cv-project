@@ -4,16 +4,18 @@ import './App.css';
 class App extends React.Component {
   render() {
 
-    const generalInfoChildren = [
-      <LabelledInput type='text' label='First Name' name='first_name' placeholder='John' required={true} />,
-      <LabelledInput type='text' label='Family Name' name='family_name' placeholder='Smith' required={false} />,
-      <LabelledInput type='tel' label='Contact Phone Number' name='phone_number1' placeholder='+1 438 283 1211' required={true} />
+    const generalInfoInputs = [
+      <LabelledInput type='text' key='first_name' label='First Name' name='first_name' placeholder='John' required={true} />,
+      <LabelledInput type='text' key='family_name' label='Family Name' name='family_name' placeholder='Smith' required={true} />,
+      <LabelledInput type='tel' key='phone_number' label='Contact Phone Number' name='phone_number' placeholder='+1 438 283 1211' required={true} />,
+      <LabelledInput type='tel' key='phone_number2' label='Concact Phone Number (optional)' name='phone_number2' placeholder='+1 438 283 1211' required={false} />,
+      <LabelledInput type='email'key='email' label='Email' name='email' placeholder='johnsmith@example.com' required={true} />,
     ];
 
     return (
       <div className="App">
         <h2>Apply now</h2>
-        <FieldSet legend='General Information' childInputs={generalInfoChildren} />
+        <FieldSet legend='General Information' childInputs={generalInfoInputs} />
       </div>
     );
   };
@@ -34,10 +36,10 @@ class FieldSet extends React.Component {
 class LabelledInput extends React.Component {
   render() {
     let { type, label, name, placeholder, required } = { ...this.props };
-    return(
-      <div className='text-input-container'>
-        <label htmlFor={name} className='text-input-label'>{label}</label>
-        <input type={type} id={name} type='text' className='text-input' placeholder={placeholder} required={required}/>
+    return (
+      <div className={`${type}-input-container`}>
+        <label htmlFor={name} className={`${type}-input-label`}>{label}</label>
+        <input type={type} id={name} className={`${type}-input`} placeholder={placeholder} required={required}/>
       </div>
     );
   }
