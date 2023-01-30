@@ -12,10 +12,18 @@ class App extends React.Component {
       <LabelledInput type='email'key='email' label='Email' name='email' placeholder='johnsmith@example.com' required={true} />,
     ];
 
+    const educationInfoInputs = [
+      <LabelledInput type='text' key='title' label='Title' name='title' require={true} />,
+      <LabelledInput type='text' key='institution' label='Institution' name='institution' require={true} />,
+      <LabelledInput type='date' key='start-date' label='Start' name='start-date' require={true} />,
+      <LabelledInput type='date' key='end-date' label='End' name='end-date' require={true} />,
+    ];
+
     return (
       <div className="App">
         <h2>Apply now</h2>
         <FieldSet legend='General Information' childInputs={generalInfoInputs} />
+        <FieldSet legend='Education' childInputs={educationInfoInputs} />
       </div>
     );
   };
